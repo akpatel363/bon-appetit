@@ -1,0 +1,16 @@
+<h1 class="text-center display-6 my-3">Dishes</h1>
+<ng-container *ngIf="status == 2 && dishes.length != 0; else loading">
+  <div class="row g-3">
+    <dish
+      [dish]="dish"
+      *ngFor="let dish of dishes"
+      (delete)="deleteDish($event)"
+      class="col-lg-4 col-md-6 col-12"
+    ></dish>
+  </div>
+  <pagination link="/restaurant/dishes" [page]="page"></pagination>
+</ng-container>
+<ng-template #loading>
+  <spinner *ngIf="status == 1"></spinner>
+  <empty *ngIf="status == 2"></empty>
+</ng-template>

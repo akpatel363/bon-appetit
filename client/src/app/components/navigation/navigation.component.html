@@ -1,0 +1,127 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
+  <div class="container">
+    <a routerLink="/" class="navbar-brand">
+      <i class="fa fa-glass"></i> Bon Appetit
+    </a>
+    <button
+      type="button"
+      data-target="#navigation"
+      data-toggle="collapse"
+      class="navbar-toggler"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navigation" #navigation>
+      <ul class="navbar-nav" [ngSwitch]="status">
+        <ng-container *ngSwitchCase="0">
+          <li class="nav-item">
+            <a routerLink="/login" class="nav-link" routerLinkActive="active">
+              <i class="fa fa-sign-in fa-lg"></i> Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="/register/user"
+              class="nav-link"
+              routerLinkActive="active"
+            >
+              <i class="fa fa-user-plus fa-lg"></i> Register User
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="/register/restaurant"
+              class="nav-link"
+              routerLinkActive="active"
+            >
+              <i class="fa fa-plus fa-lg"></i> Register Restaurant
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngSwitchCase="1">
+          <li class="nav-item">
+            <a
+              routerLink="/user/dashboard"
+              class="nav-link"
+              routerLinkActive="active"
+            >
+              <i class="fa fa-lg fa-dashboard"></i> Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="/user/restaurants"
+              class="nav-link"
+              routerLinkActive="active"
+            >
+              <i class="fa fa-cutlery fa-lg"></i> Restaurants
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="/user/orders"
+              class="nav-link"
+              routerLinkActive="active"
+            >
+              <i class="fa fa-lg fa-truck"></i> Orders
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngSwitchCase="2">
+          <li class="nav-item">
+            <a
+              routerLink="/restaurant/orders"
+              class="nav-link"
+              routerLinkActive="active"
+            >
+              <i class="fa fa-truck fa-lg"></i> Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="/restaurant/dishes"
+              class="nav-link"
+              routerLinkActive="active"
+            >
+              <i class="fa fa-cutlery fa-lg"></i> Dishes
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="/restaurant/add-dish"
+              class="nav-link"
+              routerLinkActive="active"
+            >
+              <i class="fa fa-plus fa-lg"></i> Add Dish
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li *ngIf="status == 1" class="nav-item">
+          <a routerLink="/user/cart" class="nav-link" routerLinkActive="active">
+            <i class="fa fa-shopping-cart fa-lg mr-1"></i>
+            <span class="badge bg-secondary">{{ cart.getQuantity() }}</span>
+          </a>
+        </li>
+        <li *ngIf="status != 0" class="nav-item dropdown">
+          <p class="nav-link dropdown-toggle" data-toggle="dropdown">
+            {{ user.name }}
+          </p>
+          <div class="dropdown-menu">
+            <a
+              [routerLink]="url"
+              routerLinkActive="active"
+              class="dropdown-item"
+            >
+              <i class="fa fa-user fa-lg"></i> Profile
+            </a>
+            <p class="dropdown-item" (click)="logOut()">
+              <i class="fa fa-sign-out fa-lg"></i> Log Out
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

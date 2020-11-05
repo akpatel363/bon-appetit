@@ -1,0 +1,20 @@
+<div class="card card-body shadow-sm mb-2">
+  <div class="d-flex justify-content-between align-items-center">
+    <h3>{{ item.dish.name }}</h3>
+    <div class="btn-group">
+      <button class="btn btn-sm btn-outline-success" (click)="addToCart()">
+        <i class="fa fa-plus"></i>
+      </button>
+      <button class="btn btn-sm btn-outline-danger" (click)="removeFromCart()">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
+  </div>
+  <h5 class="font-weight-light">{{ item.dish.restaurant.name }}</h5>
+  <div class="d-flex justify-content-between">
+    <h4 class="font-weight-light mb-0">
+      Rs.{{ item.dish.price }} X {{ item.quantity }}
+    </h4>
+    <h4 class="mb-0">Rs.{{ item.quantity * item.dish.price }}</h4>
+  </div>
+</div>

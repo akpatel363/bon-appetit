@@ -1,0 +1,85 @@
+<form
+  class="form-card p-3"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  *ngIf="status != 1; else loader"
+>
+  <h1 class="display-6 text-center mb-3">Add Dish</h1>
+  <div class="mb-3">
+    <label class="form-label" for="name">Name</label>
+    <input
+      id="name"
+      type="text"
+      class="form-control"
+      formControlName="name"
+      placeholder="Enter dish name..."
+      [ngClass]="{ 'is-invalid': getName().invalid && getName().touched }"
+    />
+    <small
+      class="invalid-feedback"
+      *ngIf="getName().invalid && getName().touched"
+    >
+      Please enter dish name.
+    </small>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="price">Price</label>
+    <div class="input-group">
+      <span class="input-group-text">Rs.</span>
+      <input
+        id="price"
+        type="number"
+        class="form-control"
+        formControlName="price"
+        [ngClass]="{ 'is-invalid': getPrice().invalid && getPrice().touched }"
+      />
+      <small
+        class="invalid-feedback"
+        *ngIf="getPrice().invalid && getPrice().touched"
+      >
+        <span *ngIf="getPrice().errors.required">Please enter dish price.</span>
+        <span *ngIf="getPrice().errors.min"
+          >Price should be atleast Rs.30.</span
+        >
+      </small>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="category">Category</label>
+    <select
+      id="category"
+      class="form-select"
+      formControlName="category"
+      [ngClass]="{
+        'is-invalid': getCategory().invalid && getCategory().touched
+      }"
+    >
+      <option value="Meal">Meal</option>
+      <option value="Snacks">Snacks</option>
+      <option value="Starter">Starter</option>
+      <option value="Dessert">Dessert</option>
+    </select>
+    <small
+      class="invalid-feedback"
+      *ngIf="getCategory().invalid && getCategory().touched"
+    >
+      Please select a category.
+    </small>
+  </div>
+  <div class="form-check">
+    <input
+      id="isVeg"
+      type="checkbox"
+      class="form-check-input"
+      formControlName="isVeg"
+    />
+    <label class="form-check-label" for="isVeg"> Vegetarian</label>
+  </div>
+  <div class="d-flex mb-0">
+    <button type="submit" class="btn btn-success btn-1 mr-2">Add Dish</button>
+    <button type="reset" class="btn btn-danger btn-1">Reset</button>
+  </div>
+</form>
+<ng-template #loader>
+  <spinner></spinner>
+</ng-template>

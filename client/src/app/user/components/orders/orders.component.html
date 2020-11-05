@@ -1,0 +1,9 @@
+<h1 class="text-center display-6 my-3">Orders</h1>
+<div *ngIf="status == 2 && orders.length != 0; else loader">
+  <order-item *ngFor="let order of orders" [order]="order"></order-item>
+  <pagination [link]="'/user/orders'" [page]="page"></pagination>
+</div>
+<ng-template #loader>
+  <spinner *ngIf="status == 1"></spinner>
+  <empty *ngIf="status == 2"></empty>
+</ng-template>

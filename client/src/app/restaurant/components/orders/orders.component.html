@@ -1,0 +1,21 @@
+<h1 class="display-6 text-center my-3">Orders</h1>
+<button
+  class="btn btn-info mb-2"
+  (click)="getUserOrders()"
+  *ngIf="status != 1; else disabled"
+>
+  <i class="fa fa-refresh"></i> Refresh
+</button>
+<div *ngIf="orders != null && orders.length != 0; else loading">
+  <order-item *ngFor="let order of orders" [order]="order"></order-item>
+  <pagination link="/restaurant/orders" [page]="page"></pagination>
+</div>
+<ng-template #loading>
+  <spinner *ngIf="status == 1"></spinner>
+  <empty *ngIf="status == 2"></empty>
+</ng-template>
+<ng-template #disabled>
+  <button class="btn btn-info mb-2" disabled>
+    <span class="spinner-border spinner-border-sm"></span> Refresh
+  </button>
+</ng-template>

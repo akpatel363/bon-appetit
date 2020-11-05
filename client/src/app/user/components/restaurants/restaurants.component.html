@@ -1,0 +1,15 @@
+<h1 class="display-6 my-3 text-center">Restaurants</h1>
+<ng-container *ngIf="status == 2 && rests.length != 0; else loading">
+  <div class="row g-2">
+    <restaurant
+      class="col-md-6 col-12"
+      *ngFor="let rest of rests"
+      [rest]="rest"
+    ></restaurant>
+  </div>
+  <pagination [link]="'/user/restaurants'" [page]="page"></pagination>
+</ng-container>
+<ng-template #loading>
+  <spinner *ngIf="status == 1"></spinner>
+  <empty *ngIf="status == 2"></empty>
+</ng-template>

@@ -1,0 +1,16 @@
+<div class="card mb-2 shadow-sm">
+  <h4 class="card-header">Rs.{{ order.total }}</h4>
+  <ul class="list-group">
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+      *ngFor="let oi of order.dishes"
+    >
+      <h5>{{ oi.dish | dish }}</h5>
+      <h5>{{ oi | price }}</h5>
+    </li>
+  </ul>
+  <div class="card-footer text-white bg-success">
+    <p>Delivery Address - {{ order.address }}</p>
+    <p>Ordered on {{ order.time | date: "medium" }}</p>
+  </div>
+</div>

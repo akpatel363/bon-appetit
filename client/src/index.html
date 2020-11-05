@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bon Appetit</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+    <style>
+      @import "https://fonts.googleapis.com/css?family=Allura";
+      .cont {
+        display: flex;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+      .cont h1 {
+        font-family: "Allura";
+        margin: 0;
+        font-size: 4em;
+      }
+      .cont .loading {
+        display: flex;
+        justify-content: space-around;
+        margin: 2em auto;
+        width: 120px;
+      }
+      .loading span {
+        width: 20px;
+        height: 60px;
+        background: rgba(249, 87, 56, 1);
+        animation: 0.4s anim ease-in-out infinite alternate-reverse;
+      }
+      span:nth-child(1) {
+        animation-delay: 0s;
+      }
+      span:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      span:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      span:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+      @keyframes anim {
+        0% {
+          transform: scaleY(1);
+        }
+        100% {
+          transform: scaleY(2);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <app-root>
+      <div class="cont">
+        <div>
+          <h1>Bon Appetit</h1>
+          <div class="loading">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </app-root>
+  </body>
+</html>

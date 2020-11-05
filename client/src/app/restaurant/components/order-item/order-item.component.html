@@ -1,0 +1,20 @@
+<div class="card mb-2">
+  <ul class="list-group">
+    <ng-container *ngFor="let i of order.dishes">
+      <li
+        class="list-group-item d-flex align-items-center justify-content-between"
+        *ngIf="i.dish != null"
+      >
+        <span class="h4 mb-0">{{ i.dish.name }}</span>
+        <span class="h5 font-weight-light mb-0">{{ i | price }}</span>
+      </li>
+    </ng-container>
+  </ul>
+  <div class="card-footer bg-secondary text-white">
+    <h5 class="font-weight-light">Delivery Address {{ order.address }}</h5>
+    <h5 class="font-weight-light mb-0">
+      Ordered by {{ order.user.name }} on
+      {{ order.time | date: "medium" }}
+    </h5>
+  </div>
+</div>

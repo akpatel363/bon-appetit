@@ -1,0 +1,32 @@
+<div class="card card-body form-card" *ngIf="status != 1; else loader">
+  <h1 class="display-6 mb-3 text-center">Place Order</h1>
+  <h4 class="font-weight-light">Summary</h4>
+  <h6 class="font-weight-light">
+    Total of Rs.{{ cart.getTotal() }} for {{ cart.getQuantity() }} item(s).
+  </h6>
+  <form #s="ngForm" (ngSubmit)="submit(s)">
+    <label class="form-label" for="address">Delivery Address</label>
+    <textarea
+      required
+      rows="5"
+      id="address"
+      name="address"
+      class="form-control"
+      [(ngModel)]="address"
+      placeholder="Enter delivery address..."
+    ></textarea>
+    <div class="d-flex mt-3">
+      <button
+        type="submit"
+        [disabled]="s.invalid"
+        class="btn btn-success mr-2 btn-1"
+      >
+        Place
+      </button>
+      <a class="btn btn-danger btn-1" routerLink="/user/cart">Cancel</a>
+    </div>
+  </form>
+</div>
+<ng-template #loader>
+  <spinner></spinner>
+</ng-template>

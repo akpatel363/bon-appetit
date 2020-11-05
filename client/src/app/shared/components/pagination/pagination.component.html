@@ -1,0 +1,19 @@
+<nav class="my-3 d-flex justify-content-center">
+  <ul class="pagination text-center m-0">
+    <li class="page-item" [ngClass]="{ disabled: page == 1 }">
+      <a [routerLink]="link" [queryParams]="getParams(-1)" class="page-link">
+        <i class="fa fa-angle-left fa-lg"></i> Previous
+      </a>
+    </li>
+    <li class="page-item active">
+      <p class="page-link mb-0" style="cursor: pointer">
+        {{ page }}
+      </p>
+    </li>
+    <li class="page-item">
+      <a [routerLink]="link" [queryParams]="getParams(1)" class="page-link">
+        Next <i class="fa fa-angle-right fa-lg"></i>
+      </a>
+    </li>
+  </ul>
+</nav>

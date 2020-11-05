@@ -1,0 +1,7 @@
+{
+  "env": {
+    "PORT": "PORT",
+    "MONGO_URI": "MONGO_URI",
+    "SECRET": "SECRET"
+  }
+}

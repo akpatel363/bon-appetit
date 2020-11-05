@@ -1,0 +1,32 @@
+<form #s="ngForm" (ngSubmit)="submit(s)">
+  <div class="input-group my-3">
+    <input
+      required
+      name="query"
+      type="search"
+      [(ngModel)]="query"
+      class="form-control"
+    />
+    <button type="submit" [disabled]="s.invalid" class="btn btn-warning">
+      <i class="fa fa-lg fa-search mr-1"></i> Search
+    </button>
+  </div>
+</form>
+<div *ngIf="status == 2 && dishes.length != 0; else loader">
+  <div class="row g-3">
+    <dish
+      [dish]="dish"
+      *ngFor="let dish of dishes"
+      class="col-lg-4 col-md-6 col-12"
+    ></dish>
+  </div>
+  <pagination
+    [page]="this.page"
+    link="/user/search"
+    [query]="{ query: query }"
+  ></pagination>
+</div>
+<ng-template #loader>
+  <spinner *ngIf="status == 1"></spinner>
+  <empty *ngIf="status == 2"></empty>
+</ng-template>

@@ -1,0 +1,29 @@
+<div *ngIf="status == 2; else loading">
+  <div class="p-4 my-2 shadow-sm jumbotron">
+    <h2>{{ details.name }}</h2>
+    <h2>
+      <a [href]="'mailto:' + details.email" class="mr-2">
+        <i class="fa fa-envelope"></i>
+      </a>
+      <a [href]="'tel:' + details.contact">
+        <i class="fa fa-phone-square"></i>
+      </a>
+    </h2>
+    <h5><i class="fa fa-user"></i> {{ details.owner }}</h5>
+    <h5><i class="fa fa-map-marker"></i> {{ details.address }}</h5>
+  </div>
+  <h1 class="display-6 my-3 text-center">Dishes</h1>
+  <div class="row g-3" *ngIf="dishes.length != 0; else nothing">
+    <dish
+      [dish]="dish"
+      *ngFor="let dish of dishes"
+      class="col-lg-4 col-md-6 col-12"
+    ></dish>
+  </div>
+</div>
+<ng-template #loading>
+  <spinner *ngIf="status == 1"></spinner>
+</ng-template>
+<ng-template #nothing>
+  <empty message="No dishes currently."></empty>
+</ng-template>

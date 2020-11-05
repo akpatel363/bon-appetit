@@ -1,0 +1,36 @@
+<div class="card h-100 shadow-sm">
+  <div class="card-body">
+    <h2>{{ dish.name }}</h2>
+    <p class="mb-0">Rs.{{ dish.price }}</p>
+    <p class="mb-0">{{ dish.category }}</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="mb-0">
+        {{ dish.restaurant.name }}
+      </p>
+      <span
+        class="cat"
+        [ngClass]="{ veg: dish.isVeg, 'non-veg': !dish.isVeg }"
+      ></span>
+    </div>
+  </div>
+  <div class="card-footer p-0">
+    <button
+      (click)="add()"
+      *ngIf="!quantity; else inCart"
+      class="btn btn-info btn-block"
+    >
+      <i class="fa fa-cart-plus fa-lg mr-2"></i> Add to Cart
+    </button>
+  </div>
+</div>
+<ng-template #inCart>
+  <div class="d-flex justify-content-between align-items-center">
+    <button (click)="remove()" class="btn btn-danger">
+      <i class="fa fa-minus"></i>
+    </button>
+    <p class="mb-0">{{ quantity }} in cart</p>
+    <button (click)="add()" class="btn btn-success">
+      <i class="fa fa-plus"></i>
+    </button>
+  </div>
+</ng-template>

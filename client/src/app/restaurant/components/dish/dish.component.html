@@ -1,0 +1,16 @@
+<div class="card card-body shadow-sm h-100">
+  <div class="d-flex align-items-center">
+    <h2 class="btn-1">{{ dish.name }}</h2>
+    <span class="h3">
+      <i class="fa fa-times" (click)="deleteDish()"></i>
+    </span>
+  </div>
+  <p class="mb-0">Rs.{{ dish.price }}</p>
+  <div class="d-flex align-items-center justify-content-between">
+    <p class="mb-0">{{ dish.category }}</p>
+    <span
+      class="cat"
+      [ngClass]="{ veg: dish.isVeg, 'non-veg': !dish.isVeg }"
+    ></span>
+  </div>
+</div>

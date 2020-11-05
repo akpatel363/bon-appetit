@@ -1,0 +1,91 @@
+<form
+  class="form-card p-3"
+  [formGroup]="regForm"
+  (ngSubmit)="submit()"
+  *ngIf="status == 2; else loading"
+>
+  <h1 class="display-4 mb-3 text-center">Register</h1>
+  <div class="mb-3">
+    <label class="form-label" for="name">Name</label>
+    <input
+      id="name"
+      type="text"
+      class="form-control"
+      formControlName="name"
+      placeholder="Enter your username..."
+      [ngClass]="{ 'is-invalid': getName().touched && getName().invalid }"
+    />
+    <small
+      class="invalid-feedback"
+      *ngIf="getName().touched && getName().invalid"
+    >
+      Please enter your name.
+    </small>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      class="form-control"
+      formControlName="email"
+      placeholder="Enter your email..."
+      [ngClass]="{ 'is-invalid': getEmail().invalid && getEmail().touched }"
+    />
+    <small
+      class="invalid-feedback"
+      *ngIf="getEmail().invalid && getEmail().touched"
+    >
+      <span *ngIf="getEmail().errors.required">Please enter your email.</span>
+      <span *ngIf="getEmail().errors.email">Please enter a valid email.</span>
+    </small>
+  </div>
+  <div class="mb-3">
+    <label class="form-lable" for="city">City</label>
+    <input
+      id="city"
+      type="text"
+      class="form-control"
+      formControlName="city"
+      placeholder="Enter the city you live in..."
+      [ngClass]="{ 'is-invalid': getCity().touched && getCity().invalid }"
+    />
+    <small
+      class="invalid-feedback"
+      *ngIf="getCity().touched && getCity().invalid"
+    >
+      Please enter the city you live in.
+    </small>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      class="form-control"
+      formControlName="password"
+      placeholder="Enter your password..."
+      [ngClass]="{
+        'is-invalid': getPassword().invalid && getPassword().touched
+      }"
+    />
+    <small
+      class="invalid-feedback"
+      *ngIf="getPassword().invalid && getPassword().touched"
+    >
+      <span *ngIf="getPassword().errors.required">
+        Please enter your password.
+      </span>
+      <span *ngIf="getPassword().errors.minlength">
+        Enter atleast 8 characters.
+      </span>
+    </small>
+  </div>
+  <div class="d-flex">
+    <button class="btn btn-primary btn-1 mr-2" type="submit">Register</button>
+    <button class="btn btn-danger btn-1" type="reset">Reset</button>
+  </div>
+</form>
+<ng-template #loading>
+  <spinner></spinner>
+</ng-template>

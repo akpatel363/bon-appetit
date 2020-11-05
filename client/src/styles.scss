@@ -1,0 +1,45 @@
+.form-card {
+  max-width: 500px;
+  margin: 1em auto;
+  border-radius: 12px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-1 {
+  flex: 1;
+}
+
+.jumbotron {
+  background-color: #c8e6c9;
+  border-radius: 10px;
+}
+
+span.cat {
+  display: block;
+  width: 28px;
+  height: 28px;
+  box-sizing: border-box;
+  position: relative;
+  &::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    border-radius: 7px;
+  }
+  &.veg {
+    border: 2px solid green;
+    &::before {
+      background: green;
+    }
+  }
+  &.non-veg {
+    border: 2px solid rgb(243, 53, 53);
+    &::before {
+      background: rgb(243, 53, 53);
+    }
+  }
+}
